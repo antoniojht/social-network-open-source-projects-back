@@ -1,0 +1,9 @@
+{
+  "logs": {
+    "destinations": {
+      "console": { "enabled": true, "level": "error" },
+      "file": { "enabled": true, "level": "error" }
+    },
+    "access": { "format": "tiny" }
+  }
+}

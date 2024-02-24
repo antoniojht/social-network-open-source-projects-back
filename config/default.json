@@ -1,0 +1,31 @@
+{
+  "accessToken": {
+    "defaultDurationInDays": 1
+  },
+  "logs": {
+    "destinations": {
+      "console": { "enabled": true, "level": "info" },
+      "file": { "enabled": true, "level": "info" }
+    },
+    "access": {
+      "format": ":remote-addr :remote-user :method :url HTTP/:http-version :status :res[content-length] - :response-time ms :remote-addr - :remote-user :referrer :user-agent"
+    }
+  },
+  "views": {
+    "displayErrorDescription": true
+  },
+  "signedUrls": {
+    "upload": {
+      "default":{ "durationAmount": 1, "durationType": "h" }
+    },
+    "download": {
+      "default": { "durationAmount": 1, "durationType": "d" },
+      "thumbnails": { "durationAmount": 30, "durationType": "d" }
+    }
+  },
+  "storage": {
+    "path": {
+      "avatar": "/avatar/"
+    }
+  }
+}
