@@ -21,15 +21,5 @@ export default {
       resolvedComponents.forEach((component) => {
         component.init(app);
       });
-      // .forEach((component) => {
-      //   console.log(component)
-      //   component.init(app);
-      // });
-
-      // const resolvedComponents = await Promise.all(components);
-
-      // resolvedComponents.forEach((component) => {
-      //   component.init(app);
-      // });
   },
 };

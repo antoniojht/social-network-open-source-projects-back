@@ -7,13 +7,8 @@ const app = express();
 
 const init = async () => {
   cors.init(app);
-  await components.init(app);
   server.init(app);
+  await components.init(app);
 };
 
 init();
-
-// TODO: Remove this route example
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});

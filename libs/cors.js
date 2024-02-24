@@ -3,6 +3,7 @@ const init = (app) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header(
       'Access-Control-Allow-Headers',
+      // eslint-disable-next-line max-len
       'Authorization, Referer, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method'
     );
     res.header(
@@ -12,8 +13,8 @@ const init = (app) => {
     res.header('Allow', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     next();
   });
-}
+};
 
 export default {
   init
-}
+};
