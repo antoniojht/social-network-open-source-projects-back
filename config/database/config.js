@@ -12,7 +12,7 @@ export default {
 	test: {
 		username: 'postgres',
 		password: 'postgres',
-		database: 'testMuseum',
+		database: 'testName',
 		host: 'db',
 		dialect: 'postgres',
 	},

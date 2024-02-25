@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from './libs/cors.js';
-import components from './components/index.js';
 import server from './libs/server.js';
+import components from './components/index.js';
 import database from './config/database/index.js';
 
 const app = express();

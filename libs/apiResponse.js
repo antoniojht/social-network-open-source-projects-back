@@ -10,13 +10,13 @@ function sendError(res, status, error) {
   res.status(status || 500).json({ message: error });
   return Promise.resolve();
 }
-function download(res, { fileData, fileFullname, mimeType }) {
+function download(res, { fileData, fileFullName, mimeType }) {
   const fileContents = Buffer.from(fileData, 'base64');
 
   const readStream = new PassThrough();
   readStream.end(fileContents);
 
-  res.set('Content-disposition', `attachment; filename=${fileFullname}`);
+  res.set('Content-disposition', `attachment; filename=${fileFullName}`);
   res.set('Content-Type', mimeType);
 
   readStream.pipe(res);
