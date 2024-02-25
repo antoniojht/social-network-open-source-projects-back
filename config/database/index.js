@@ -26,7 +26,7 @@ class Database {
 
 	#loadModels = () => {
     // Example of loading a model
-		// this.Area = require('../../components/areas/models/area')(
+		// this.Entity = require('../../components/entity-1/models/entity')(
 		// 	this.sequelize,
 		// 	Sequelize
 		// );
