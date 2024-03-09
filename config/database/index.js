@@ -20,16 +20,34 @@ class Database {
 			this.config
 		);
 
-		this.#loadModels();
+		await this.#loadModels();
 		await this.#authenticate();
 	};
 
-	#loadModels = () => {
-    // Example of loading a model
-		// this.Entity = require('../../components/entity-1/models/entity')(
-		// 	this.sequelize,
-		// 	Sequelize
-		// );
+	#loadModels = async () => {
+		const UserModel = await import('../../components/user/models/user.entity.js');
+    this.User = UserModel.default(this.sequelize, Sequelize);
+
+		const CollaboratorModel = await import('../../components/user/models/collaborator.entity.js');
+    this.Collaborator = CollaboratorModel.default(this.sequelize, Sequelize);
+
+		const FollowModel = await import('../../components/user/models/follow.entity.js');
+    this.Follow = FollowModel.default(this.sequelize, Sequelize);
+
+		const MessageModel = await import('../../components/user/models/message.entity.js');
+    this.Message = MessageModel.default(this.sequelize, Sequelize);
+
+		const ProjectModel = await import('../../components/project/models/project.entity.js');
+    this.Project = ProjectModel.default(this.sequelize, Sequelize);
+
+		const RatingModel = await import('../../components/project/models/rating.entity.js');
+    this.Rating = RatingModel.default(this.sequelize, Sequelize);
+
+		const CommentModel = await import('../../components/project/models/comment.entity.js');
+    this.Comment = CommentModel.default(this.sequelize, Sequelize);
+
+		const FavoriteModel = await import('../../components/project/models/favorite.entity.js');
+    this.Favorite = FavoriteModel.default(this.sequelize, Sequelize);
 
 		Object.keys(this).forEach((modelName) => {
 			if (this[modelName].associate) {
