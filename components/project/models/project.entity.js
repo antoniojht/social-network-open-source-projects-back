@@ -58,6 +58,10 @@ const model = (sequelize, DataTypes) => {
 		Project.belongsToMany(database.User, {
 			through: database.Comment,
 		});
+
+		Project.belongsToMany(database.User, {
+			through: database.Favorite,
+		});
 	};
 
 	return Project;

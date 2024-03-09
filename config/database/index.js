@@ -40,6 +40,9 @@ class Database {
 		const CommentModel = await import('../../components/project/models/comment.entity.js');
     this.Comment = CommentModel.default(this.sequelize, Sequelize);
 
+		const FavoriteModel = await import('../../components/project/models/favorite.entity.js');
+    this.Favorite = FavoriteModel.default(this.sequelize, Sequelize);
+
 		Object.keys(this).forEach((modelName) => {
 			if (this[modelName].associate) {
 				this[modelName].associate(this);

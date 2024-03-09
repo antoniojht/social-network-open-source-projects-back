@@ -54,6 +54,10 @@ const model = (sequelize, DataTypes) => {
 		User.belongsToMany(database.Project, {
 			through: database.Comment,
 		});
+
+		User.belongsToMany(database.Project, {
+			through: database.Favorite,
+		});
 	};
 
 	return User;
