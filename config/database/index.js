@@ -20,16 +20,19 @@ class Database {
 			this.config
 		);
 
-		this.#loadModels();
+		await this.#loadModels();
 		await this.#authenticate();
 	};
 
-	#loadModels = () => {
-    // Example of loading a model
-		// this.Entity = require('../../components/entity-1/models/entity')(
-		// 	this.sequelize,
-		// 	Sequelize
-		// );
+	#loadModels = async () => {
+		const UserModel = await import('../../components/user/models/user.entity.js');
+    this.User = UserModel.default(this.sequelize, Sequelize);
+
+		const ProjectModel = await import('../../components/project/models/project.entity.js');
+    this.Project = ProjectModel.default(this.sequelize, Sequelize);
+
+		const CollaboratorModel = await import('../../components/user/models/collaborator.entity.js');
+    this.Collaborator = CollaboratorModel.default(this.sequelize, Sequelize);
 
 		Object.keys(this).forEach((modelName) => {
 			if (this[modelName].associate) {

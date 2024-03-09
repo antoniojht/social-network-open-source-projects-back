@@ -1,4 +1,4 @@
-const { UUIDV4 } = require('sequelize');
+import { UUIDV4 } from 'sequelize';
 
 const model = (sequelize, DataTypes) => {
 	const User = sequelize.define(
@@ -41,6 +41,12 @@ const model = (sequelize, DataTypes) => {
   User.addHook('beforeCreate', (user) => {
 		user.id = UUIDV4();
 	});
+
+	User.associate = ({ Project, Collaborator }) => {
+		User.belongsToMany(Project, {
+			through: Collaborator,
+		});
+	};
 
 	return User;
 };
