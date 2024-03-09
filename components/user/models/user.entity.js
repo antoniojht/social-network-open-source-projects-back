@@ -1,8 +1,8 @@
 const { UUIDV4 } = require('sequelize');
 
 const model = (sequelize, DataTypes) => {
-	const Project = sequelize.define(
-		'project',
+	const User = sequelize.define(
+		'user',
 		{
 			id: {
 				type: DataTypes.UUID,
@@ -14,26 +14,22 @@ const model = (sequelize, DataTypes) => {
 				allowNull: false,
 				unique: true,
 			},
-			description: {
+			email: {
 				type: DataTypes.STRING(256),
 				allowNull: true,
 			},
-			isEnabled: {
-				type: DataTypes.BOOLEAN,
+			provider: {
+				type: DataTypes.STRING(32),
 				defaultValue: true,
 			},
-      category: {
+      profileImage: {
 				type: DataTypes.STRING(32),
 				allowNull: false,
 			},
-			languages: {
-				type: DataTypes.ARRAY(DataTypes.STRING),
-				allowNull: false,
-			},
-			linkRepository: {
-				type: DataTypes.STRING(256),
+			lastLogin: {
+				type: DataTypes.DATE,
 				allowNull: true,
-			},
+			}
 		},
 		{
 			sequelize,
@@ -42,11 +38,11 @@ const model = (sequelize, DataTypes) => {
 		},
 	);
 
-  Project.addHook('beforeCreate', (project) => {
-		project.id = UUIDV4();
+  User.addHook('beforeCreate', (user) => {
+		user.id = UUIDV4();
 	});
 
-	return Project;
+	return User;
 };
 
 export default model;
