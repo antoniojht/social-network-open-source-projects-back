@@ -34,6 +34,9 @@ class Database {
 		const FollowModel = await import('../../components/user/models/follow.entity.js');
     this.Follow = FollowModel.default(this.sequelize, Sequelize);
 
+		const MessageModel = await import('../../components/user/models/message.entity.js');
+    this.Message = MessageModel.default(this.sequelize, Sequelize);
+
 		const ProjectModel = await import('../../components/project/models/project.entity.js');
     this.Project = ProjectModel.default(this.sequelize, Sequelize);
 

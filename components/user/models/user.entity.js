@@ -63,6 +63,11 @@ const model = (sequelize, DataTypes) => {
 			through: database.Follow,
 			as: 'following',
 		});
+
+		User.belongsToMany(database.User, {
+			through: database.Message,
+			as: 'messaging',
+		});
 	};
 
 	return User;
