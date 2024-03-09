@@ -31,6 +31,9 @@ class Database {
 		const CollaboratorModel = await import('../../components/user/models/collaborator.entity.js');
     this.Collaborator = CollaboratorModel.default(this.sequelize, Sequelize);
 
+		const FollowModel = await import('../../components/user/models/follow.entity.js');
+    this.Follow = FollowModel.default(this.sequelize, Sequelize);
+
 		const ProjectModel = await import('../../components/project/models/project.entity.js');
     this.Project = ProjectModel.default(this.sequelize, Sequelize);
 
