@@ -1,6 +1,6 @@
 const model = (sequelize, DataTypes) => {
-	const Collaborator = sequelize.define(
-		'collaborator',
+	const Comment = sequelize.define(
+		'comments',
 		{
       id: {
 				type: DataTypes.UUID,
@@ -23,12 +23,16 @@ const model = (sequelize, DataTypes) => {
           key: 'id',
         },
 			},
-      rol: {
-				type: DataTypes.STRING(32),
-				allowNull: false,
+			commentId: {
+				type: DataTypes.UUID,
+				defaultValue: DataTypes.UUIDV4,
+        references: {
+          model: 'comments',
+          key: 'id',
+        },
 			},
-			statusCollaborator: {
-				type: DataTypes.STRING(32),
+      text: {
+				type: DataTypes.TEXT,
 				allowNull: false,
 			},
 		},
@@ -39,7 +43,7 @@ const model = (sequelize, DataTypes) => {
 		},
 	);
 
-	return Collaborator;
+	return Comment;
 };
 
 export default model;

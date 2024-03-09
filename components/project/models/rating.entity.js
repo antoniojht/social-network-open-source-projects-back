@@ -1,12 +1,7 @@
 const model = (sequelize, DataTypes) => {
-	const Collaborator = sequelize.define(
-		'collaborator',
+	const Rating = sequelize.define(
+		'ratings',
 		{
-      id: {
-				type: DataTypes.UUID,
-				defaultValue: DataTypes.UUIDV4,
-				primaryKey: true,
-			},
 			userId: {
 				type: DataTypes.UUID,
 				defaultValue: DataTypes.UUIDV4,
@@ -23,12 +18,8 @@ const model = (sequelize, DataTypes) => {
           key: 'id',
         },
 			},
-      rol: {
-				type: DataTypes.STRING(32),
-				allowNull: false,
-			},
-			statusCollaborator: {
-				type: DataTypes.STRING(32),
+      score: {
+				type: DataTypes.INTEGER,
 				allowNull: false,
 			},
 		},
@@ -39,7 +30,7 @@ const model = (sequelize, DataTypes) => {
 		},
 	);
 
-	return Collaborator;
+	return Rating;
 };
 
 export default model;

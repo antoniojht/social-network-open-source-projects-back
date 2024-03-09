@@ -46,9 +46,17 @@ const model = (sequelize, DataTypes) => {
 		project.id = UUIDV4();
 	});
 
-	Project.associate = ({ User, Collaborator }) => {
-		Project.belongsToMany(User, {
-			through: Collaborator,
+	Project.associate = (database) => {
+		Project.belongsToMany(database.User, {
+			through: database.Collaborator,
+		});
+
+		Project.belongsToMany(database.User, {
+			through: database.Rating,
+		});
+
+		Project.belongsToMany(database.User, {
+			through: database.Comment,
 		});
 	};
 

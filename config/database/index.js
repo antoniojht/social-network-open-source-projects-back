@@ -28,11 +28,17 @@ class Database {
 		const UserModel = await import('../../components/user/models/user.entity.js');
     this.User = UserModel.default(this.sequelize, Sequelize);
 
+		const CollaboratorModel = await import('../../components/user/models/collaborator.entity.js');
+    this.Collaborator = CollaboratorModel.default(this.sequelize, Sequelize);
+
 		const ProjectModel = await import('../../components/project/models/project.entity.js');
     this.Project = ProjectModel.default(this.sequelize, Sequelize);
 
-		const CollaboratorModel = await import('../../components/user/models/collaborator.entity.js');
-    this.Collaborator = CollaboratorModel.default(this.sequelize, Sequelize);
+		const RatingModel = await import('../../components/project/models/rating.entity.js');
+    this.Rating = RatingModel.default(this.sequelize, Sequelize);
+
+		const CommentModel = await import('../../components/project/models/comment.entity.js');
+    this.Comment = CommentModel.default(this.sequelize, Sequelize);
 
 		Object.keys(this).forEach((modelName) => {
 			if (this[modelName].associate) {

@@ -10,12 +10,12 @@ const model = (sequelize, DataTypes) => {
 				primaryKey: true,
 			},
 			name: {
-				type: DataTypes.STRING(32),
+				type: DataTypes.STRING(64),
 				allowNull: false,
 				unique: true,
 			},
 			email: {
-				type: DataTypes.STRING(256),
+				type: DataTypes.STRING(64),
 				allowNull: true,
 			},
 			provider: {
@@ -23,7 +23,7 @@ const model = (sequelize, DataTypes) => {
 				defaultValue: true,
 			},
       profileImage: {
-				type: DataTypes.STRING(32),
+				type: DataTypes.STRING(64),
 				allowNull: false,
 			},
 			lastLogin: {
@@ -42,9 +42,17 @@ const model = (sequelize, DataTypes) => {
 		user.id = UUIDV4();
 	});
 
-	User.associate = ({ Project, Collaborator }) => {
-		User.belongsToMany(Project, {
-			through: Collaborator,
+	User.associate = (database) => {
+		User.belongsToMany(database.Project, {
+			through: database.Collaborator,
+		});
+
+		User.belongsToMany(database.Project, {
+			through: database.Rating,
+		});
+
+		User.belongsToMany(database.Project, {
+			through: database.Comment,
 		});
 	};
 
